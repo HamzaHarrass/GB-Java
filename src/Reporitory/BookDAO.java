@@ -49,4 +49,19 @@ public class BookDAO {
             e.printStackTrace();
         }
     }
+    public void DeleteBook(Book book){
+        try{
+        String sql ="DELETE FROM book WHERE isbn=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,book.getIsbn());
+        int rowsAffected = preparedStatement.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Book Delete successfully.");
+        } else {
+            System.out.println("Book Delete failed.");
+        }
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    }
 }

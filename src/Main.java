@@ -3,6 +3,7 @@ import Services.BookService;
 public class Main {
     public static void main(String[] args) {
         //BookService.AddBook();
-        BookService.UpdateBook();
+        //BookService.UpdateBook();
+        BookService.DeleteBook();
     }
 }

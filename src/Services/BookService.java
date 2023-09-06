@@ -53,4 +53,16 @@ public class BookService {
         BookDAO bookDAO = new BookDAO(connection);
         bookDAO.UpdateBook(book);
     }
+    public static void DeleteBook(){
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.conn();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the book isbn to DELETE: ");
+        String isbn = scanner.nextLine();
+        Book book = new Book();
+        book.setIsbn(isbn);
+        BookDAO bookDAO = new BookDAO(connection);
+        bookDAO.DeleteBook(book);
+    }
 }
