@@ -27,4 +27,26 @@ public class BookDAO {
             e.printStackTrace();
         }
     }
+    public void UpdateBook(Book book){
+        try {
+            String sql = "UPDATE book SET titre=? , statu=? , auteurid=? WHERE isbn=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,book.getTitre());
+            preparedStatement.setString(2,book.getStatu());
+            preparedStatement.setInt(3,book.getAuteurid());
+            preparedStatement.setString(4,book.getIsbn());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+//            System.out.println(rowsAffected);
+
+            if (rowsAffected > 0) {
+                System.out.println("Data updated successfully.");
+            } else {
+                System.out.println("Data update failed.");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

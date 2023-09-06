@@ -31,4 +31,26 @@ public class BookService {
         BookDAO bookDAO = new BookDAO(connection);
         bookDAO.AddBook(book);
     }
+    public static void UpdateBook(){
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.conn();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the book isbn to update: ");
+        String ISBN = scanner.nextLine();
+        System.out.println("Enter the new book titre: ");
+        String NewTitle = scanner.nextLine();
+        System.out.println("Entre the new status");
+        String NewStatus = scanner.nextLine();
+        System.out.println("Entre the new auteurId");
+        int NewAuteurId = scanner.nextInt();
+        Book book = new Book();
+        book.setIsbn(ISBN);
+        book.setTitre(NewTitle);
+        book.setStatu(NewStatus);
+        book.setAuteurid(NewAuteurId);
+
+        BookDAO bookDAO = new BookDAO(connection);
+        bookDAO.UpdateBook(book);
+    }
 }
