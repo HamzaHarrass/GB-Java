@@ -1,9 +1,12 @@
+import Enitities.Auteur;
+import Services.BookService;
 public class Main {
     public static void main(String[] args) {
-        Book.findBook();
-        Auteur.findAuthor();
-        //Book.addBook();
+        //Book.findBook();
+        //Auteur.findAuthor();
+        //Enitities.Book.addBook();
         //Book.UpdateBook();
-        Book.DeleteBook();
+        //Enitities.Book.DeleteBook();
+        BookService.AddBook();
     }
 }
