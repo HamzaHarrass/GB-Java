@@ -115,7 +115,7 @@ public class Book {
             System.out.println("Entre the new auteurId");
             int newAuteurId = Scanner.nextInt();
 
-//            System.out.println("before : " + isbn + newAuteurId + newStatus + newTitre);
+            System.out.println("before : " + isbn + newTitre + newStatus + newAuteurId);
 
             String sql = "UPDATE book SET titre=? , statu=? , auteurid=? WHERE isbn=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -138,7 +138,22 @@ public class Book {
         }
     }
     public static void DeleteBook(){
-
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("Enter the book isbn to DELETE: ");
+            String isbn = scanner.nextLine();
+            String sql ="DELETE FROM book WHERE isbn=?";
+            PreparedStatement preparedStatement=connection.prepareStatement(sql);
+            preparedStatement.setString(1,isbn);
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Book Delete successfully.");
+            } else {
+                System.out.println("Book Delete failed.");
+            }
+                }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
 

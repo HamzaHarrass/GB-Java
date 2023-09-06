@@ -3,6 +3,7 @@ public class Main {
         Book.findBook();
         Auteur.findAuthor();
         //Book.addBook();
-        Book.UpdateBook();
+        //Book.UpdateBook();
+        Book.DeleteBook();
     }
 }
