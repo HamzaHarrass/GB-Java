@@ -2,6 +2,7 @@ public class Main {
     public static void main(String[] args) {
         Book.findBook();
         Auteur.findAuthor();
-        Book.addBook();
+        //Book.addBook();
+        Book.UpdateBook();
     }
 }

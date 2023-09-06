@@ -70,7 +70,6 @@ public class Book {
                 System.out.println("    " + resultSet.getString("isbn") + "                     |     " + resultSet.getString("titre") + "  | " + resultSet.getString("statu") + "      |" + resultSet.getInt("auteurid"));
             }
             stmt.close();
-            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,7 +99,6 @@ public class Book {
                 System.out.println("Data insertion failed.");
             }
             preparedStatement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -115,10 +113,33 @@ public class Book {
             System.out.println("Entre the new status");
             String newStatus = Scanner.nextLine();
             System.out.println("Entre the new auteurId");
+            int newAuteurId = Scanner.nextInt();
 
+//            System.out.println("before : " + isbn + newAuteurId + newStatus + newTitre);
+
+            String sql = "UPDATE book SET titre=? , statu=? , auteurid=? WHERE isbn=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, newTitre);
+            preparedStatement.setString(2, newStatus);
+                preparedStatement.setInt(3, newAuteurId);
+            preparedStatement.setString(4, isbn);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+//            System.out.println(rowsAffected);
+
+            if (rowsAffected > 0) {
+                System.out.println("Data updated successfully.");
+            } else {
+                System.out.println("Data update failed.");
+            }
         }catch (Exception e){
-
+          e.printStackTrace();
         }
     }
+    public static void DeleteBook(){
+
+    }
 }
+
 
