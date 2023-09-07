@@ -4,21 +4,21 @@ import Enitities.Book;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-public class BookDAO {
+public class BookDao {
     private Connection connection;
 
-    public BookDAO(Connection connection){
+    public BookDao(Connection connection){
         this.connection = connection;
     }
     public void AddBook(Book book){
         try {
-            String sql = "INSERT INTO book(isbn,titre,statu,auteurid) values (?,?,?,?)";
+            String sql = "INSERT INTO book(isbn,titre,auteurid) values (?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,book.getIsbn());
             preparedStatement.setString(2,book.getTitre());
-            preparedStatement.setString(3,book.getStatu());
-            preparedStatement.setInt(4,book.getAuteurid());
+            preparedStatement.setInt(3,book.getAuteurid());
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Book added successfully!");
@@ -63,5 +63,26 @@ public class BookDAO {
     }catch (Exception e){
         e.printStackTrace();
     }
+    }
+    public void FindDisponibleBook(Book book){
+        try {
+            String sql = "SELECT * FROM book WHERE statu = 'Disponible'";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            System.out.println("Disponible Books:");
+            while (resultSet.next()) {
+                String isbn = resultSet.getString("isbn");
+                String titre = resultSet.getString("titre");
+                String statu = resultSet.getString("statu");
+                int authorId = resultSet.getInt("auteurid");
+                System.out.println("ISBN: " + isbn);
+                System.out.println("Title: " + titre);
+                System.out.println("Status: " + statu);
+                System.out.println("Author ID: " + authorId);
+                System.out.println("--------------");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
