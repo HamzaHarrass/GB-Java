@@ -68,4 +68,15 @@ public class BookService {
         BookDao bookDao = new BookDao(connection);
         bookDao.FindDisponibleBook(book);
     }
+    public static void ChercherTitleBook() {
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.conn();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter book title to search: ");
+        String title = scanner.nextLine();
+        Book book = new Book();
+        book.setTitre(title);
+        BookDao bookDao = new BookDao(connection);
+        bookDao.ChercherTitleBook(book);
+    }
 }
