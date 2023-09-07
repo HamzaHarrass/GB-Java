@@ -92,5 +92,10 @@ public class BookService {
         BookDao bookDao = new BookDao(connection);
         bookDao.ChercherAuteurBook(FirstName,LastName);
     }
-    //public static void Statistique
+    public static void StatistiqueBookDisponible(){
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.conn();
+        BookDao bookDao = new BookDao(connection);
+        bookDao.BookDisponible();
+    }
 }

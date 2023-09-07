@@ -6,6 +6,7 @@ public class Main {
        // BookService.DeleteBook();
         //BookService.FindBook();
         //BookService.ChercherTitleBook();
-        BookService.ChercherAuteurBook();
+        //BookService.ChercherAuteurBook();
+        BookService.StatistiqueBookDisponible();
     }
 }
