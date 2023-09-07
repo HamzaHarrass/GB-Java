@@ -142,4 +142,17 @@ public class BookDao {
             e.printStackTrace();
         }
     }
+    public void BookEmprute(){
+        try {
+            String sql= "SELECT count(*)  EmprunteBook From book WHERE statu='emprunté'";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int query = resultSet.getInt("EmprunteBook");
+                System.out.println("Book Disponible: " + query);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

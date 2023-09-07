@@ -7,6 +7,7 @@ public class Main {
         //BookService.FindBook();
         //BookService.ChercherTitleBook();
         //BookService.ChercherAuteurBook();
-        BookService.StatistiqueBookDisponible();
+        //BookService.StatistiqueBookDisponible();
+        BookService.StatistiqueBoukEmprunte();
     }
 }

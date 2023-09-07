@@ -98,4 +98,10 @@ public class BookService {
         BookDao bookDao = new BookDao(connection);
         bookDao.BookDisponible();
     }
+    public static  void StatistiqueBoukEmprunte(){
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.conn();
+        BookDao bookDao = new BookDao(connection);
+        bookDao.BookEmprute();
+    }
 }
