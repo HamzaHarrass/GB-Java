@@ -106,4 +106,26 @@ public class BookDao {
             e.printStackTrace();
         }
     }
+    public void ChercherAuteurBook(String authorName){
+        try {
+            String sql ="SELECT book.isbn, book.titre, book.statu, book.auteurid FROM book " +
+                    "INNER JOIN auteur ON book.auteurid = auteur.id" +
+                    " WHERE auteur.nom =?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, authorName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String isbn = resultSet.getString("isbn");
+                String bookTitle = resultSet.getString("titre");
+                String statu = resultSet.getString("statu");
+
+                System.out.println("ISBN: " + isbn);
+                System.out.println("Title: " + bookTitle);
+                System.out.println("Status: " + statu);
+                System.out.println("--------------");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

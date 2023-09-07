@@ -12,7 +12,7 @@ public class Book {
     private String statu;
     private int auteurid;
     private Auteur auteur;
-    private List<Borrow> borrows;
+
 
     public Book(String isbn, String titre, String statu, int auteurid) {
         this.isbn = isbn;

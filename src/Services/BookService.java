@@ -79,4 +79,13 @@ public class BookService {
         BookDao bookDao = new BookDao(connection);
         bookDao.ChercherTitleBook(book);
     }
+    public static void ChercherAuteurBook(){
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.conn();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Auteur name to search: ");
+        String auteur = scanner.nextLine();
+        BookDao bookDao = new BookDao(connection);
+        bookDao.ChercherAuteurBook(auteur);
+    }
 }

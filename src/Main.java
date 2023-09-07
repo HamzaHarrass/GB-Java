@@ -5,6 +5,7 @@ public class Main {
         //BookService.UpdateBook();
        // BookService.DeleteBook();
         //BookService.FindBook();
-        BookService.ChercherTitleBook();
+        //BookService.ChercherTitleBook();
+        BookService.ChercherAuteurBook();
     }
 }
