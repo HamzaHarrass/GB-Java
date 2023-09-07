@@ -106,13 +106,14 @@ public class BookDao {
             e.printStackTrace();
         }
     }
-    public void ChercherAuteurBook(String authorName){
+    public void ChercherAuteurBook(String firstName,String lastName ){
         try {
             String sql ="SELECT book.isbn, book.titre, book.statu, book.auteurid FROM book " +
                     "INNER JOIN auteur ON book.auteurid = auteur.id" +
-                    " WHERE auteur.nom =?";
+                    " WHERE auteur.nom =? or auteur.prenom=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, authorName);
+            preparedStatement.setString(1,firstName);
+            preparedStatement.setString(2,lastName);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 String isbn = resultSet.getString("isbn");

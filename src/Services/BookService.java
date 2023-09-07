@@ -83,9 +83,14 @@ public class BookService {
         DbConnection dbConnection = new DbConnection();
         Connection connection = dbConnection.conn();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Auteur name to search: ");
-        String auteur = scanner.nextLine();
+        System.out.println("Cherche Book Whit Name Auteur");
+        System.out.println("---------------------------");
+        System.out.println("Enter  first name :");
+        String FirstName = scanner.nextLine();
+        System.out.println("Enter last name");
+        String LastName = scanner.nextLine();
         BookDao bookDao = new BookDao(connection);
-        bookDao.ChercherAuteurBook(auteur);
+        bookDao.ChercherAuteurBook(FirstName,LastName);
     }
+    //public static void Statistique
 }
