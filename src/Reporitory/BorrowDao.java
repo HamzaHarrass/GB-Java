@@ -1,9 +1,9 @@
 package Reporitory;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
 import Enitities.Borrow;
 
@@ -59,7 +59,43 @@ public class BorrowDao {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public static void FindBorrow(Borrow borrow){
+        try{
+            String sql ="SELECT books.isbn, books.titre, borrowers.first_name, borrowers.last_name, borrowers.CIN,borrows.datelivraison,borrows.datereturn FROM books " +
+                    "INNER JOIN borrows ON books.isbn = borrows.bookid " +
+                    "INNER JOIN borrowers ON borrows.borrowerid = borrowers.nombreid";
+            PreparedStatement preparedStatement =connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String isbn = resultSet.getString("isbn");
+                String bookTitle = resultSet.getString("titre");
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                String CIN = resultSet.getString("CIN");
+                Date datelivraison = resultSet.getDate("datelivraison");
+                Date datereturn = resultSet.getDate("datereturn");
 
+                System.out.println("ISBN: " + isbn);
+                System.out.println("Title: " + bookTitle);
+                System.out.println("First Name: " + firstName);
+                System.out.println("Last Name: " + lastName);
+                System.out.println("CIN : " + CIN);
+                System.out.println("Date Livraison : " + datelivraison);
+                System.out.println("Date Return :" + datereturn);
+                System.out.println("--------------");
+
+            }
+            /*SELECT books.book_name, borrowers.borrower_name
+            FROM books
+            INNER JOIN borrows ON books.book_id = borrows.book_id
+            INNER JOIN borrowers ON borrows.borrower_id = borrowers.borrower_id;*/
+                  /*  "\"SELECT b.titre AS book_title, br.name AS borrower_name, br.cin AS borrower_cin \" +\n" +
+                    "        FROM book AS b  "
+                    "        INNER JOIN borrower AS br ON b.auteurid = br.id"*/
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
 

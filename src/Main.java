@@ -11,6 +11,7 @@ public class Main {
         //BookService.ChercherAuteurBook();
         BookService.StatistiqueBookDisponible();
         BookService.StatistiqueBoukEmprunte();
+        BorrowService.FindBorrow();
         BorrowService.AddBrrower();
     }
 }

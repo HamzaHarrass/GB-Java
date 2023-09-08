@@ -41,4 +41,12 @@ public class BorrowService {
         borrow.setDateReturn(returnDate);
         borrowDao.AddBorrow(borrow);
     }
+
+    public static void FindBorrow(){
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.conn();
+        BorrowDao borrowDao = new BorrowDao(connection);
+        Borrow borrow = new Borrow();
+        borrowDao.FindBorrow(borrow);
+    }
 }
