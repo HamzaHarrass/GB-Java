@@ -20,7 +20,6 @@ public class BookService {
         String titre = scanner.nextLine();
         System.out.print("Enter book auteurid: ");
         int authorid = scanner.nextInt();
-
         Book book = new Book();
         book.setIsbn(isbn);
         book.setTitre(titre);

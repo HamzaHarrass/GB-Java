@@ -1,4 +1,6 @@
 import Services.BookService;
+import Services.BorrowService;
+
 public class Main {
     public static void main(String[] args) {
         //BookService.AddBook();
@@ -9,5 +11,6 @@ public class Main {
         //BookService.ChercherAuteurBook();
         BookService.StatistiqueBookDisponible();
         BookService.StatistiqueBoukEmprunte();
+        BorrowService.AddBrrower();
     }
 }

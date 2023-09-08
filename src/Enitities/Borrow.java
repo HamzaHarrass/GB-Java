@@ -1,18 +1,18 @@
 package Enitities;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Borrow {
-    private int idBorrower;
-    private int idBook;
+    private int borrowerid;
+    private String bookid;
     private Date dateLivraison;
     private Date dateReturn;
     private Borrow borrow;
     private Borrower borrower;
 
-    public Borrow(int idBorrower, int idBook, Date dateLivraison, Date dateReturn) {
-        this.idBorrower = idBorrower;
-        this.idBook = idBook;
+    public Borrow(int borrowerid, String bookid, Date dateLivraison, Date dateReturn) {
+        this.borrowerid=borrowerid;
+        this.bookid=bookid;
         this.dateLivraison = dateLivraison;
         this.dateReturn = dateReturn;
     }
@@ -21,19 +21,19 @@ public class Borrow {
     }
 
     public int getIdBorrower() {
-        return idBorrower;
+        return borrowerid;
     }
 
     public void setIdBorrower(int idBorrower) {
-        this.idBorrower = idBorrower;
+        this.borrowerid = idBorrower;
     }
 
-    public int getIdBook() {
-        return idBook;
+    public String getIdBook() {
+        return bookid;
     }
 
-    public void setIdBook(int idBook) {
-        this.idBook = idBook;
+    public void setIdBook(String idBook) {
+        this.bookid = idBook;
     }
 
     public Date getDateLivraison() {
