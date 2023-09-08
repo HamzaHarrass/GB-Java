@@ -14,7 +14,7 @@ public class BookDao {
     }
     public void AddBook(Book book){
         try {
-            String sql = "INSERT INTO book(isbn,titre,auteurid) values (?,?,?,?)";
+            String sql = "INSERT INTO books(isbn,titre,auteurid) values (?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,book.getIsbn());
             preparedStatement.setString(2,book.getTitre());
@@ -29,10 +29,10 @@ public class BookDao {
     }
     public void UpdateBook(Book book){
         try {
-            String sql = "UPDATE book SET titre=? , statu=? , auteurid=? WHERE isbn=?";
+            String sql = "UPDATE books SET titre=? , status=? , auteurid=? WHERE isbn=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,book.getTitre());
-            preparedStatement.setString(2,book.getStatu());
+            preparedStatement.setString(2,book.getStatus());
             preparedStatement.setInt(3,book.getAuteurid());
             preparedStatement.setString(4,book.getIsbn());
 
@@ -51,7 +51,7 @@ public class BookDao {
     }
     public void DeleteBook(Book book){
         try{
-        String sql ="DELETE FROM book WHERE isbn=?";
+        String sql ="DELETE FROM books WHERE isbn=?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,book.getIsbn());
         int rowsAffected = preparedStatement.executeUpdate();
@@ -66,18 +66,18 @@ public class BookDao {
     }
     public void FindDisponibleBook(Book book){
         try {
-            String sql = "SELECT * FROM book WHERE statu = 'Disponible'";
+            String sql = "SELECT * FROM books WHERE status = 'Disponible'";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             System.out.println("Disponible Books:");
             while (resultSet.next()) {
                 String isbn = resultSet.getString("isbn");
                 String titre = resultSet.getString("titre");
-                String statu = resultSet.getString("statu");
+                String status = resultSet.getString("status");
                 int authorId = resultSet.getInt("auteurid");
                 System.out.println("ISBN: " + isbn);
                 System.out.println("Title: " + titre);
-                System.out.println("Status: " + statu);
+                System.out.println("Status: " + status);
                 System.out.println("Author ID: " + authorId);
                 System.out.println("--------------");
             }
@@ -87,18 +87,18 @@ public class BookDao {
     }
     public void  ChercherTitleBook(Book book){
         try {
-            String sql ="SELECT isbn,titre,statu FROM book WHERE titre=?";
+            String sql ="SELECT isbn,titre,status FROM books WHERE titre=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,book.getTitre());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 String isbn = resultSet.getString("isbn");
                 String bookTitle = resultSet.getString("titre");
-                String statu = resultSet.getString("statu");
+                String status = resultSet.getString("status");
 
                 System.out.println("ISBN: " + isbn);
                 System.out.println("Title: " + bookTitle);
-                System.out.println("Status: " + statu);
+                System.out.println("Status: " + status);
                 System.out.println("--------------");
             }
 
@@ -108,9 +108,9 @@ public class BookDao {
     }
     public void ChercherAuteurBook(String firstName,String lastName ){
         try {
-            String sql ="SELECT book.isbn, book.titre, book.statu, book.auteurid FROM book " +
-                    "INNER JOIN auteur ON book.auteurid = auteur.id" +
-                    " WHERE auteur.nom =? or auteur.prenom=?";
+            String sql ="SELECT books.isbn, books.titre, books.status, books.auteurid FROM books " +
+                    "INNER JOIN auteurs ON books.auteurid = auteurs.id" +
+                    " WHERE auteurs.nom =? or auteurs.prenom=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,firstName);
             preparedStatement.setString(2,lastName);
@@ -118,11 +118,11 @@ public class BookDao {
             while (resultSet.next()){
                 String isbn = resultSet.getString("isbn");
                 String bookTitle = resultSet.getString("titre");
-                String statu = resultSet.getString("statu");
+                String status = resultSet.getString("status");
 
                 System.out.println("ISBN: " + isbn);
                 System.out.println("Title: " + bookTitle);
-                System.out.println("Status: " + statu);
+                System.out.println("Status: " + status);
                 System.out.println("--------------");
             }
         }catch (Exception e){
@@ -131,7 +131,7 @@ public class BookDao {
     }
     public void BookDisponible(){
         try {
-            String sql= "SELECT count(*)  DisponibleBook From book WHERE statu='Disponible'";
+            String sql= "SELECT count(*)  DisponibleBook From books WHERE status='Disponible'";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -144,12 +144,12 @@ public class BookDao {
     }
     public void BookEmprute(){
         try {
-            String sql= "SELECT count(*)  EmprunteBook From book WHERE statu='emprunté'";
+            String sql= "SELECT count(*)  EmprunteBook From books WHERE status='emprunté'";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 int query = resultSet.getInt("EmprunteBook");
-                System.out.println("Book Disponible: " + query);
+                System.out.println("Book Emprunté: " + query);
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -9,15 +9,15 @@ public class Book {
     private String isbn;
 
     private String titre;
-    private String statu;
+    private String status;
     private int auteurid;
     private Auteur auteur;
 
 
-    public Book(String isbn, String titre, String statu, int auteurid) {
+    public Book(String isbn, String titre, String status, int auteurid) {
         this.isbn = isbn;
         this.titre = titre;
-        this.statu = statu;
+        this.status = status;
         this.auteurid = auteurid;
     }
 
@@ -40,12 +40,12 @@ public class Book {
         this.titre = titre;
     }
 
-    public String getStatu() {
-        return statu;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatu(String statu) {
-        this.statu = statu;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getAuteurid() {

@@ -9,7 +9,7 @@ public class DbConnection {
         Connection con =null;
         try{
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gb","root","");
-
+            //System.out.println("");
         }catch (Exception e){
             e.printStackTrace();
             //System.out.println("Error de connection");
