@@ -86,13 +86,6 @@ public class BorrowDao {
                 System.out.println("--------------");
 
             }
-            /*SELECT books.book_name, borrowers.borrower_name
-            FROM books
-            INNER JOIN borrows ON books.book_id = borrows.book_id
-            INNER JOIN borrowers ON borrows.borrower_id = borrowers.borrower_id;*/
-                  /*  "\"SELECT b.titre AS book_title, br.name AS borrower_name, br.cin AS borrower_cin \" +\n" +
-                    "        FROM book AS b  "
-                    "        INNER JOIN borrower AS br ON b.auteurid = br.id"*/
         }catch (Exception e){
             e.printStackTrace();
         }
