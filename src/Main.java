@@ -1,5 +1,6 @@
 import Services.BookService;
 import Services.BorrowService;
+import Services.BoorrowerService;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +12,9 @@ public class Main {
         //BookService.ChercherAuteurBook();
         BookService.StatistiqueBookDisponible();
         BookService.StatistiqueBoukEmprunte();
-        BorrowService.FindBorrow();
-        BorrowService.AddBrrower();
+        //BorrowService.FindBorrow();
+        //BorrowService.AddBrrower();
+        //BoorrowerService.AddBorrower();
+        BoorrowerService.DeleteBorrower();
     }
 }

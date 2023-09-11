@@ -14,7 +14,6 @@ public class BorrowService {
 
 
     public static void AddBrrower() {
-        boolean valideNombre = false;
         DbConnection dbConnection = new DbConnection();
         Connection connection = dbConnection.conn();
         BorrowDao borrowDao = new BorrowDao(connection);

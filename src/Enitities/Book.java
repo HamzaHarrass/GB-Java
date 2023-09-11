@@ -55,7 +55,7 @@ public class Book {
     public void setAuteurid(int auteurid) {
         this.auteurid = auteurid;
     }
-    
+
 }
 
 
