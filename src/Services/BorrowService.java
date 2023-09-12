@@ -18,17 +18,32 @@ public class BorrowService {
         Connection connection = dbConnection.conn();
         BorrowDao borrowDao = new BorrowDao(connection);
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Book isbn: ");
-        String isbn = scanner.nextLine();
-        if (!borrowDao.CheckIsbn(isbn)) {
-            System.out.println("THE BOOK NOT EXECUTE");
-            return;
+        boolean validIsbn = false;
+        String isbn = null;
+        while (!validIsbn) {
+            System.out.println("Enter Book ISBN: ");
+            isbn = scanner.nextLine();
+            if (!borrowDao.CheckIsbn(isbn)) {
+                System.out.println("THE BOOK DOES NOT EXIST");
+            } else {
+                validIsbn = true;
+            }
         }
-        System.out.println("Enter Nombre Id Borrower: ");
-        int NombreId = scanner.nextInt();
-        if (!borrowDao.CheckBorrower(NombreId)){
-            System.out.println("THE NOMBRE NOT EXECUTE");
+        boolean valaideNombreId = false;
+        int NombreId = 0;
+        while (!valaideNombreId) {
+            System.out.println("Enter Nombre Id Borrower: ");
+            NombreId = scanner.nextInt();
+            if (!borrowDao.CheckBorrower(NombreId)) {
+                System.out.println("THE NOMBRE NOT EXECUTE");
+            }else if (borrowDao.checkBorrow(NombreId)) {
+                System.out.println("This borrower already has a book reserved.");
+                return;
+            }else {
+                valaideNombreId = true;
+            }
         }
+
         Calendar calendar = Calendar.getInstance();
         Date deliveryDate = new Date(calendar.getTime().getTime());
         calendar.add(Calendar.DAY_OF_MONTH, 7);

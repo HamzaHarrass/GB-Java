@@ -43,6 +43,20 @@ public class BorrowDao {
         }
         return false;
     }
+    public  boolean checkBorrow(int NombreId){
+        try {
+            String sql = "SELECT * FROM borrows WHERE borrowerid=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,NombreId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public static void AddBorrow(Borrow borrow){
         try{

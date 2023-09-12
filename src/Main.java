@@ -13,8 +13,8 @@ public class Main {
         BookService.StatistiqueBookDisponible();
         BookService.StatistiqueBoukEmprunte();
         //BorrowService.FindBorrow();
-        //BorrowService.AddBrrower();
+        BorrowService.AddBrrower();
         //BoorrowerService.AddBorrower();
-        BoorrowerService.DeleteBorrower();
+        //BoorrowerService.DeleteBorrower();
     }
 }
