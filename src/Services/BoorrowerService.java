@@ -1,10 +1,8 @@
 package Services;
 
-import Connection.DbConnection;
-import Enitities.Book;
+import Config.DbConnection;
 import Enitities.Borrower;
-import Reporitory.BookDao;
-import Reporitory.BorrowerDao;
+import Repository.BorrowerDao;
 
 import java.sql.Connection;
 import java.util.Scanner;

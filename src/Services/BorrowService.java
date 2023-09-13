@@ -1,13 +1,15 @@
 package Services;
 
-import Connection.DbConnection;
+import Config.DbConnection;
 import Enitities.Borrow;
-import Reporitory.BorrowDao;
+import Repository.BorrowDao;
 
 import java.sql.Connection;
 import java.util.Calendar;
 import java.sql.Date;
 import java.util.Scanner;
+
+
 
 public class BorrowService {
 
@@ -24,7 +26,8 @@ public class BorrowService {
             System.out.println("Enter Book ISBN: ");
             isbn = scanner.nextLine();
             if (!borrowDao.CheckIsbn(isbn)) {
-                System.out.println("THE BOOK DOES NOT EXIST");
+                System.out.println("\033[1;32m" + "THE BOOK DOES NOT EXIST." + "\033[0m");
+
             } else {
                 validIsbn = true;
             }
@@ -36,8 +39,10 @@ public class BorrowService {
             NombreId = scanner.nextInt();
             if (!borrowDao.CheckBorrower(NombreId)) {
                 System.out.println("THE NOMBRE NOT EXECUTE");
+                System.out.println("\033[1;32m" + "TTHE NOMBRE NOT EXECUTE." + "\033[0m");
+
             }else if (borrowDao.checkBorrow(NombreId)) {
-                System.out.println("This borrower already has a book reserved.");
+                System.out.println("\033[1;32m" + "This borrower already has a book reserved." + "\033[0m");
                 return;
             }else {
                 valaideNombreId = true;

@@ -1,8 +1,8 @@
 package Services;
 
 import Enitities.Book;
-import Reporitory.BookDao;
-import Connection.DbConnection;
+import Repository.BookDao;
+import Config.DbConnection;
 
 import java.sql.Connection;
 import java.util.Scanner;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class BookService {
     public static void AddBook(){
 
-        DbConnection dbConnection = new DbConnection();
+        DbConnection dbConnection = new DbConnection();//create object class DbConnection
         Connection connection = dbConnection.conn();
 
         Scanner scanner =new Scanner(System.in);
